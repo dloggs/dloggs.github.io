@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>香香公主香水-香氛世界与优雅之选</title>
+    <meta name="description" content="探索香香公主香水，了解其香调分类、使用场合与选购指南。从清新淡香到浓郁甜香，找到属于你的独特印记，感受香氛带来的自信与优雅。">
+    <meta name="keywords" content="香香公主香水,香水,香调,淡香水,浓香水,女士香水,选购指南,香氛">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background: #faf7f2;
+            color: #3d2f2a;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 顶部提示条 */
+        .top-bar {
+            background: #f1e8de;
+            padding: 8px 0;
+            font-size: 14px;
+            text-align: center;
+            color: #7a5c4f;
+            letter-spacing: 1px;
+        }
+
+        /* 页眉 */
+        .site-header {
+            background: #ffffff;
+            border-bottom: 1px solid #e8ddd2;
+            padding: 18px 0;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #f7c9c0, #eaa9a0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: #fff;
+        }
+
+        .brand h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #4d3429;
+            letter-spacing: 1px;
+        }
+
+        .brand h1 span {
+            color: #c2766a;
+        }
+
+        .site-nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        .site-nav a {
+            text-decoration: none;
+            color: #5a4238;
+            font-size: 16px;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: all .3s;
+        }
+
+        .site-nav a:hover,
+        .site-nav a.active {
+            border-bottom-color: #c2766a;
+            color: #c2766a;
+        }
+
+        /* 搜索区域 */
+        .search-section {
+            background: linear-gradient(135deg, #f7e1d6 0%, #f3c9bc 100%);
+            padding: 60px 20px 70px;
+            text-align: center;
+        }
+
+        .search-inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .search-section h2 {
+            font-size: 42px;
+            font-weight: 300;
+            color: #4a3228;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        .search-section p {
+            font-size: 18px;
+            color: #6d4f41;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            display: flex;
+            background: #fff;
+            border-radius: 50px;
+            padding: 6px;
+            box-shadow: 0 8px 24px rgba(90, 60, 50, 0.12);
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            background: transparent;
+            outline: none;
+            color: #3d2f2a;
+            border-radius: 50px;
+        }
+
+        .search-box button {
+            background: #c2766a;
+            border: none;
+            color: #fff;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background .3s;
+        }
+
+        .search-box button:hover {
+            background: #a85f54;
+        }
+
+        /* 主体内容 */
+        .main-content {
+            padding: 50px 0 60px;
+        }
+
+        /* 特色卡片 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border-top: 3px solid transparent;
+            transition: transform .3s, box-shadow .3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(194, 118, 106, 0.1);
+        }
+
+        .feature-card .icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            color: #4a3228;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: #8a6f62;
+            line-height: 1.6;
+        }
+
+        /* 分区标题 */
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #4a3228;
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 5px;
+            height: 24px;
+            background: #c2766a;
+            border-radius: 3px;
+        }
+
+        .section-sub {
+            color: #8a6f62;
+            margin-bottom: 28px;
+            font-size: 15px;
+        }
+
+        /* 香水分类 */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 55px;
+        }
+
+        .category-item {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            transition: transform .3s;
+        }
+
+        .category-item:hover {
+            transform: scale(1.02);
+        }
+
+        .category-img {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 52px;
+            background: #f7ede7;
+        }
+
+        .category-img.one { background: #fdeee8; }
+        .category-img.two { background: #eef4f0; }
+        .category-img.three { background: #faf0e4; }
+
+        .category-info {
+            padding: 20px;
+        }
+
+        .category-info h3 {
+            font-size: 18px;
+            color: #4a3228;
+            margin-bottom: 6px;
+        }
+
+        .category-info p {
+            font-size: 14px;
+            color: #7a5f52;
+            margin-bottom: 10px;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag-list span {
+            background: #f5e9e2;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #8a5f52;
+        }
+
+        /* 热门排行 */
+        .hot-section {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+        }
+
+        .hot-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .hot-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-bottom: 1px dashed #e8ddd2;
+            padding: 12px 0;
+        }
+
+        .hot-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #f1e3db;
+            color: #8a5f52;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .hot-num.top {
+            background: #c2766a;
+            color: #fff;
+        }
+
+        .hot-name {
+            font-weight: 500;
+            color: #4a3228;
+            flex: 1;
+        }
+
+        .hot-desc {
+            font-size: 13px;
+            color: #9a7b6e;
+        }
+
+        /* 选购指南 */
+        .guide-section {
+            background: #f5ebe4;
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 50px;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .guide-item {
+            background: rgba(255,255,255,0.7);
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid #c2766a;
+        }
+
+        .guide-item h4 {
+            color: #4a3228;
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .guide-item p {
+            font-size: 14px;
+            color: #6d5043;
+        }
+
+        /* 使用场合 */
+        .occasions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 20px 0 40px;
+        }
+
+        .occasion-badge {
+            background: #fff;
+            border: 1.5px solid #dbb8ab;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            color: #7a5c4f;
+            cursor: default;
+            transition: all .3s;
+        }
+
+        .occasion-badge:hover {
+            background: #c2766a;
+            color: #fff;
+            border-color: #c2766a;
+        }
+
+        /* FAQ */
+        .faq-section {
+            margin-bottom: 50px;
+        }
+
+        .faq-item {
+            background: #fff;
+            border-radius: 10px;
+            padding: 22px 26px;
+            margin-bottom: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .faq-item h3 {
+            font-size: 17px;
+            color: #4a3228;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .faq-item p {
+            font-size: 15px;
+            color: #6d5043;
+        }
+
+        /* 页脚 */
+        .site-footer {
+            background: #3d2b24;
+            color: #cbb3a8;
+            padding: 40px 0 20px;
+            margin-top: 30px;
+        }
+
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .footer-col h4 {
+            color: #e8d5cb;
+            font-size: 17px;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #b99a8d;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 8px;
+            transition: color .3s;
+        }
+
+        .footer-col a:hover {
+            color: #e8d5cb;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+            color: #a08477;
+        }
+
+        /* 响应式 */
+        @media (max-width: 992px) {
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .site-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 16px;
+            }
+            .search-section h2 {
+                font-size: 30px;
+            }
+            .search-box {
+                flex-direction: column;
+                border-radius: 20px;
+                padding: 12px;
+            }
+            .search-box button {
+                margin-top: 10px;
+                width: 100%;
+            }
+            .hot-list,
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .feature-grid,
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 22px;
+            }
+            .hot-section {
+                padding: 20px;
+            }
+            .guide-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">✨ 香香公主香水 · 让每一次呼吸都充满魅力</div>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">
+                <div class="brand-icon">🌸</div>
+                <h1>香香公主<span>香水</span></h1>
+            </div>
+            <nav class="site-nav">
+                <a href="#home" class="active">首页</a>
+                <a href="#category">香调分类</a>
+                <a href="#hot">人气推荐</a>
+                <a href="#guide">选购指南</a>
+                <a href="#faq">常见问题</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="search-section" id="home">
+        <div class="search-inner">
+            <h2>香香公主香水</h2>
+            <p>寻找属于你的独特香氛语言</p>
+            <div class="search-box">
+                <input type="text" placeholder="搜索你喜欢的香调或场景...">
+                <button type="button">开始探索</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="container">
+
+            <!-- 特色亮点 -->
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <span class="icon">💧</span>
+                    <h3>持久留香</h3>
+                    <p>科学配比香精浓度，让香气从清晨延续至夜晚，时刻保持优雅气息。</p>
+                </div>
+                <div class="feature-card">
+                    <span class="icon">🌸</span>
+                    <h3>丰富香调</h3>
+                    <p>从清新果香到温暖木质，覆盖多种风格，满足不同性格与场合需求。</p>
+                </div>
+                <div class="feature-card">
+                    <span class="icon">🛡️</span>
+                    <h3>安全温和</h3>
+                    <p>精选优质原料，经严格质量检测，适合日常使用，呵护肌肤。</p>
+                </div>
+                <div class="feature-card">
+                    <span class="icon">🎁</span>
+                    <h3>送礼佳选</h3>
+                    <p>精致瓶身设计与优雅礼盒包装，是表达心意与情感的理想之选。</p>
+                </div>
+            </div>
+
+            <!-- 香调分类 -->
+            <h2 class="section-title">香香公主香水 · 香调分类</h2>
+            <p class="section-sub">不同香调展现不同气质，找到与你灵魂共鸣的那一抹香气</p>
+
+            <div class="category-grid" id="category">
+                <div class="category-item">
+                    <div class="category-img one">🍊</div>
+                    <div class="category-info">
+                        <h3>清新果香调</h3>
+                        <p>融合柑橘、柠檬、苹果等鲜活果香，带来轻盈愉悦的初印象，适合日常通勤与休闲时光。</p>
+                        <div class="tag-list">
+                            <span>活力</span>
+                            <span>日常</span>
+                            <span>春夏</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="category-item">
+                    <div class="category-img two">🌹</div>
+                    <div class="category-info">
+                        <h3>优雅花香调</h3>
+                        <p>以玫瑰、茉莉、牡丹等经典花卉为核心，温柔而富有女人味，适合约会与正式场合。</p>
+                        <div class="tag-list">
+                            <span>浪漫</span>
+                            <span>温柔</span>
+                            <span>经典</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="category-item">
+                    <div class="category-img three">🌿</div>
+                    <div class="category-info">
+                        <h3>清新木质调</h3>
+                        <p>雪松、檀香、香根草等木质气息沉稳内敛，营造宁静知性的氛围，适合秋冬季与职场。</p>
+                        <div class="tag-list">
+                            <span>沉稳</span>
+                            <span>知性</span>
+                            <span>秋冬</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 热门排行 -->
+            <div class="hot-section" id="hot">
+                <h2 class="section-title">人气推荐</h2>
+                <p class="section-sub">根据香调特点与使用反馈整理的热门之选</p>
+                <div class="hot-list">
+                    <div class="hot-item">
+                        <div class="hot-num top">1</div>
+                        <div class="hot-name">香香公主 · 晨露玫瑰</div>
+                        <div class="hot-desc">清甜玫瑰混合露水气息</div>
+                    </div>
+                    <div class="hot-item">
+                        <div class="hot-num top">2</div>
+                        <div class="hot-name">香香公主 · 蜜桃甜心</div>
+                        <div class="hot-desc">多汁蜜桃与白麝香</div>
+                    </div>
+                    <div class="hot-item">
+                        <div class="hot-num top">3</div>
+                        <div class="hot-name">香香公主 · 雪松之恋</div>
+                        <div class="hot-desc">清冷雪松与琥珀</div>
+                    </div>
+                    <div class="hot-item">
+                        <div class="hot-num">4</div>
+                        <div class="hot-name">香香公主 · 茉莉白茶</div>
+                        <div class="hot-desc">茉莉清香融合茶韵</div>
+                    </div>
+                    <div class="hot-item">
+                        <div class="hot-num">5</div>
+                        <div class="hot-name">香香公主 · 柑橘派对</div>
+                        <div class="hot-desc">阳光柑橘混合柠檬草</div>
+                    </div>
+                    <div class="hot-item">
+                        <div class="hot-num">6</div>
+                        <div class="hot-name">香香公主 · 午夜檀香</div>
+                        <div class="hot-desc">温暖檀香与香草</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 使用场合 -->
+            <h2 class="section-title">适合的场合</h2>
+            <p class="section-sub">香香公主香水系列覆盖多种生活场景</p>
+            <div class="occasions">
+                <span class="occasion-badge">日常通勤</span>
+                <span class="occasion-badge">浪漫约会</span>
+                <span class="occasion-badge">商务会议</span>
+                <span class="occasion-badge">闺蜜聚会</span>
+                <span class="occasion-badge">休闲度假</span>
+                <span class="occasion-badge">重要典礼</span>
+                <span class="occasion-badge">晚安助眠</span>
+            </div>
+
+            <!-- 选购指南 -->
+            <div class="guide-section" id="guide">
+                <h2 class="section-title">选购指南</h2>
+                <p class="section-sub">如何挑选适合你的香香公主香水</p>
+                <div class="guide-grid">
+                    <div class="guide-item">
+                        <h4>01 · 了解香精浓度</h4>
+                        <p>浓香水（Parfum）留香最长，适合晚间与正式场合；淡香水（EDT）轻盈清爽，适合日常使用。香香公主系列提供不同浓度选择。</p>
+                    </div>
+                    <div class="guide-item">
+                        <h4>02 · 根据季节选择</h4>
+                        <p>春夏季节推荐清新果香或淡雅花香，秋冬则可选择木质调或琥珀调，让香氛与自然气息更和谐。</p>
+                    </div>
+                    <div class="guide-item">
+                        <h4>03 · 考虑个性与风格</h4>
+                        <p>活泼外向者可尝试柑橘、浆果类香调；内敛安静者更适合白茶、雪松等清雅气息。香水是无声的名片。</p>
+                    </div>
+                    <div class="guide-item">
+                        <h4>04 · 试用小技巧</h4>
+                        <p>建议在手腕内侧或耳后试用，等待15分钟让前调散开，感受中后调与肌肤融合后的真实气味再做决定。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 常见问题 FAQ -->
+            <div class="faq-section" id="faq">
+                <h2 class="section-title">常见问题</h2>
+                <p class="section-sub">关于香香公主香水你可能想知道的事</p>
+
+                <div class="faq-item">
+                    <h3>香香公主香水的留香时间大约多久？</h3>
+                    <p>留香时间因香精浓度和个体肤质而异。淡香水通常可留香4-6小时，浓香水可达8小时以上。建议根据场合适时补香。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>如何正确喷洒香水才能让香气更持久？</h3>
+                    <p>可将香水喷在脉搏跳动处，如手腕内侧、颈侧、耳后。避免摩擦，这样会破坏香调结构。也可在衣物内侧轻喷少量。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>香香公主香水适合敏感肌肤使用吗？</h3>
+                    <p>产品配方温和，但每个人的肌肤敏感度不同。建议首次使用前在耳后或手臂内侧做小面积测试，观察数小时无不适再正常使用。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>香水应该如何保存？</h3>
+                    <p>请存放于阴凉干燥处，避免阳光直射和高温环境。使用后拧紧瓶盖，避免香气挥发。妥善保存可延长香水使用寿命。</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-col">
+                    <h4>香香公主香水</h4>
+                    <p style="font-size:14px; color:#b99a8d;">专注于打造高品质香氛产品，以丰富的香调语言帮助每个人表达独特自我。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <a href="#category">香调分类</a>
+                    <a href="#hot">人气推荐</a>
+                    <a href="#guide">选购指南</a>
+                    <a href="#faq">常见问题</a>
+                </div>
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <a href="#">客户服务</a>
+                    <a href="#">经销商查询</a>
+                    <a href="#">品牌合作</a>
+                    <a href="#">隐私政策</a>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 香香公主香水 版权所有 · 让香气成为你的语言
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+</html>
