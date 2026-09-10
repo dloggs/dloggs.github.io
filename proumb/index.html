@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>proumb专用浏览器-安全访问与高效浏览工具指南</title>
+    <meta name="description" content="proumb专用浏览器是为特定场景设计的轻量级浏览工具，提供更流畅的访问体验、隐私保护和个性化设置。了解其功能、使用场景、安全注意事项及常见问题。">
+    <meta name="keywords" content="proumb专用浏览器,proumb浏览器,专用浏览器,安全浏览器,浏览工具,隐私保护">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: #f5f7fa;
+            color: #1a2a3a;
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* 顶部提示条 */
+        .top-bar {
+            background: #0f1c2e;
+            color: #a0b3c8;
+            font-size: 13px;
+            padding: 8px 0;
+            text-align: center;
+        }
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .top-bar a {
+            color: #5ec4d2;
+            text-decoration: none;
+        }
+        /* 页眉 */
+        .site-header {
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #2b5876, #1e3c5c);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 20px;
+            box-shadow: 0 4px 10px rgba(27, 55, 89, 0.25);
+        }
+        .logo-text h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a2a3a;
+            line-height: 1.2;
+        }
+        .logo-text p {
+            font-size: 12px;
+            color: #6b7b8d;
+        }
+        .main-nav {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .main-nav a {
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 15px;
+            color: #334e68;
+            text-decoration: none;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+        .main-nav a:hover, .main-nav a.active {
+            background: #1e3c5c;
+            color: #ffffff;
+        }
+        .nav-cta {
+            background: #2b5876;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .nav-cta:hover {
+            background: #1a3a55;
+        }
+        /* 主视觉区 */
+        .hero {
+            background: linear-gradient(145deg, #16324a 0%, #1d4e6e 55%, #2a6a8c 100%);
+            color: #eef5fb;
+            padding: 60px 0 70px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            right: -100px;
+            top: -100px;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-inner {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-text {
+            flex: 1.2;
+        }
+        .hero-text h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 18px;
+            line-height: 1.3;
+            letter-spacing: 0.5px;
+        }
+        .hero-text h2 span {
+            color: #8fd3e8;
+            border-bottom: 3px solid #8fd3e8;
+        }
+        .hero-text p {
+            font-size: 17px;
+            color: #c8dced;
+            margin-bottom: 28px;
+            max-width: 560px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: #ffb84d;
+            color: #1a2a3a;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #8fd3e8;
+            color: #e6f2fa;
+            padding: 10px 26px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .btn-outline:hover {
+            background: rgba(143, 211, 232, 0.1);
+            border-color: #ffffff;
+        }
+        .hero-visual {
+            flex: 0.8;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(8px);
+            border-radius: 24px;
+            padding: 30px 25px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .hero-visual .browser-mock {
+            background: #eef2f6;
+            border-radius: 12px;
+            padding: 12px 12px 0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .mock-bar {
+            display: flex;
+            gap: 6px;
+            padding: 6px 8px;
+            background: #dde3ea;
+            border-radius: 8px 8px 0 0;
+            align-items: center;
+        }
+        .mock-bar span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .mock-bar .red { background: #e46a76; }
+        .mock-bar .yellow { background: #f0b64a; }
+        .mock-bar .green { background: #61b87a; }
+        .mock-url {
+            flex: 1;
+            background: #fff;
+            border-radius: 20px;
+            font-size: 12px;
+            padding: 4px 14px;
+            color: #4a5a6a;
+            text-align: left;
+            margin-left: 8px;
+        }
+        .mock-body {
+            height: 120px;
+            background: #ffffff;
+            border-radius: 0 0 12px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8a9bb0;
+            font-size: 14px;
+            gap: 10px;
+            flex-direction: column;
+        }
+        .mock-body i {
+            font-size: 28px;
+            color: #2b5876;
+            font-style: normal;
+        }
+        .hero-features {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 22px;
+            color: #c8dced;
+            font-size: 13px;
+            gap: 8px;
+        }
+        .hero-features div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+        .hero-features span:first-child {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffd58a;
+        }
+        /* 特性卡片区 */
+        .section {
+            padding: 60px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-title h3 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #1a2a3a;
+            margin-bottom: 8px;
+        }
+        .section-title p {
+            color: #5b6b7c;
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .feature-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px 24px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-top: 4px solid #2b5876;
+        }
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+        .feature-card .icon {
+            font-size: 38px;
+            margin-bottom: 14px;
+            line-height: 1;
+        }
+        .feature-card h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #1e3c5c;
+        }
+        .feature-card p {
+            font-size: 14px;
+            color: #4a5a6a;
+        }
+        /* 使用场景 */
+        .scenario-section {
+            background: #ffffff;
+            padding: 60px 0;
+        }
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        .scenario-item {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+        }
+        .scenario-num {
+            background: #1e3c5c;
+            color: #fff;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .scenario-item h4 {
+            font-size: 18px;
+            margin-bottom: 6px;
+            color: #1a2a3a;
+        }
+        .scenario-item p {
+            font-size: 14px;
+            color: #4a5a6a;
+        }
+        /* 安全提示 */
+        .security-tips {
+            background: #f0f4f8;
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 30px;
+            border-left: 6px solid #2b5876;
+        }
+        .security-tips h4 {
+            font-size: 18px;
+            color: #1e3c5c;
+            margin-bottom: 12px;
+        }
+        .security-tips ul {
+            list-style: none;
+            padding: 0;
+        }
+        .security-tips li {
+            padding: 8px 0 8px 28px;
+            position: relative;
+            font-size: 15px;
+            color: #2a3a4a;
+        }
+        .security-tips li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: #2b8a5e;
+            font-weight: bold;
+        }
+        /* 对比表 */
+        .compare-section {
+            padding: 60px 0;
+        }
+        .compare-table {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            overflow-x: auto;
+        }
+        .compare-table table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+        .compare-table th, .compare-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid #e8edf2;
+        }
+        .compare-table th {
+            background: #f7f9fb;
+            font-weight: 600;
+            color: #1a2a3a;
+            font-size: 15px;
+        }
+        .compare-table td {
+            font-size: 14px;
+            color: #334e68;
+        }
+        .compare-table tr:last-child td {
+            border-bottom: none;
+        }
+        .compare-table .highlight-col {
+            background: #f0f7fb;
+            font-weight: 500;
+        }
+        .badge {
+            display: inline-block;
+            background: #e0f0fa;
+            color: #1e5a7a;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        /* FAQ */
+        .faq-section {
+            background: #ffffff;
+            padding: 60px 0;
+        }
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 18px 0;
+        }
+        .faq-item summary {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a2a3a;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-item summary::after {
+            content: "+";
+            font-size: 22px;
+            color: #2b5876;
+            font-weight: 400;
+            transition: transform 0.2s;
+        }
+        .faq-item[open] summary::after {
+            transform: rotate(45deg);
+        }
+        .faq-item .answer {
+            padding-top: 12px;
+            color: #4a5a6a;
+            font-size: 14px;
+        }
+        /* 下载引导 */
+        .download-section {
+            background: linear-gradient(135deg, #1e3c5c, #2b5876);
+            padding: 50px 0;
+            text-align: center;
+            color: #ffffff;
+        }
+        .download-section h3 {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+        .download-section p {
+            font-size: 15px;
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .dl-btn {
+            background: #ffffff;
+            color: #1e3c5c;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 15px;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+        .dl-btn:hover {
+            transform: scale(1.03);
+        }
+        .dl-btn.alt {
+            background: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+        }
+        /* 页脚 */
+        .site-footer {
+            background: #0f1c2e;
+            color: #8ba1b8;
+            padding: 40px 0 20px;
+            font-size: 14px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .footer-grid h5 {
+            color: #e0eaf3;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+        .footer-grid a {
+            display: block;
+            color: #8ba1b8;
+            text-decoration: none;
+            padding: 4px 0;
+            transition: color 0.2s;
+        }
+        .footer-grid a:hover {
+            color: #ffffff;
+        }
+        .footer-bottom {
+            border-top: 1px solid #1e3347;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #5a7188;
+        }
+        /* 响应式 */
+        @media (max-width: 992px) {
+            .hero-inner {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .hero-visual {
+                width: 100%;
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .main-nav {
+                justify-content: center;
+            }
+            .hero-text h2 {
+                font-size: 28px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .scenario-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .section {
+                padding: 40px 0;
+            }
+            .top-bar .container {
+                justify-content: center;
+            }
+        }
+    </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+    <!-- 顶部信息条 -->
+    <div class="top-bar">
+        <div class="container">
+            <span>📢 专为特定场景优化的浏览体验，注重安全与流畅</span>
+            <span>支持 Windows / macOS / Android</span>
+        </div>
+    </div>
+
+    <!-- 页眉 -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo-area">
+                <div class="logo-icon">P</div>
+                <div class="logo-text">
+                    <h1>proumb专用浏览器</h1>
+                    <p>安全 · 高效 · 专注</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <a href="#features" class="active">核心功能</a>
+                <a href="#scenarios">使用场景</a>
+                <a href="#security">安全说明</a>
+                <a href="#compare">对比分析</a>
+                <a href="#faq">常见问题</a>
+            </nav>
+            <a href="#download" class="nav-cta">立即下载</a>
+        </div>
+    </header>
+
+    <!-- 主视觉 -->
+    <section class="hero">
+        <div class="container hero-inner">
+            <div class="hero-text">
+                <h2>为特定需求而生的<span>专业浏览工具</span></h2>
+                <p>proumb专用浏览器采用轻量化内核设计，在隐私保护、访问速度和稳定性方面进行针对性优化。无论是日常高频访问还是特殊场景使用，都能提供更专注、更可靠的浏览体验。</p>
+                <div class="hero-buttons">
+                    <a href="#download" class="btn-primary">免费下载</a>
+                    <a href="#features" class="btn-outline">了解更多</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="browser-mock">
+                    <div class="mock-bar">
+                        <span class="red"></span>
+                        <span class="yellow"></span>
+                        <span class="green"></span>
+                        <div class="mock-url">🔒 安全连接已加密</div>
+                    </div>
+                    <div class="mock-body">
+                        <i>🛡️</i>
+                        <span>隐私保护模式已启用</span>
+                        <span style="font-size: 12px;">页面加载速度提升 40%</span>
+                    </div>
+                </div>
+                <div class="hero-features">
+                    <div><span>3ms</span><span>极速响应</span></div>
+                    <div><span>99.9%</span><span>稳定运行</span></div>
+                    <div><span>128位</span><span>加密保护</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心功能 -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h3>核心功能特性</h3>
+                <p>针对使用体验的每个环节进行精细优化，让浏览更流畅、更安全</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">⚡</div>
+                    <h4>极速加载引擎</h4>
+                    <p>采用优化的网络请求调度机制，大幅减少页面加载等待时间。智能预加载技术让常用网页秒开。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔒</div>
+                    <h4>多层隐私防护</h4>
+                    <p>内置广告拦截、指纹隐藏、追踪阻止等功能。无痕模式下不记录任何浏览历史与缓存数据。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔄</div>
+                    <h4>智能连接管理</h4>
+                    <p>自动选择最优网络通道，在面对复杂网络环境时保持连接稳定，降低断线重连的概率。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🎯</div>
+                    <h4>专注模式</h4>
+                    <p>一键开启无干扰界面，隐藏多余元素，让注意力集中在核心内容上，提升浏览效率。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📂</div>
+                    <h4>会话保存与恢复</h4>
+                    <p>意外关闭浏览器或系统重启后，可一键恢复全部标签页与浏览状态，不丢失重要工作进度。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🧩</div>
+                    <h4>轻量扩展支持</h4>
+                    <p>兼容主流浏览器扩展格式，针对常用工具进行了兼容性优化，满足个性化功能扩展需求。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使用场景 -->
+    <section class="scenario-section" id="scenarios">
+        <div class="container">
+            <div class="section-title">
+                <h3>适用场景解析</h3>
+                <p>了解在哪些情况下，这款专用浏览器能发挥最大价值</p>
+            </div>
+            <div class="scenario-grid">
+                <div class="scenario-item">
+                    <div class="scenario-num">1</div>
+                    <div>
+                        <h4>高频访问特定站点</h4>
+                        <p>如果日常需要频繁打开某些固定网站，专用浏览器的站点加速和会话保持功能可以减少重复登录和等待时间。</p>
+                    </div>
+                </div>
+                <div class="scenario-item">
+                    <div class="scenario-num">2</div>
+                    <div>
+                        <h4>隐私敏感场景</h4>
+                        <p>在公共电脑或共享网络环境下，需要更强的隐私保护。该浏览器默认开启严格隐私策略，降低信息泄露风险。</p>
+                    </div>
+                </div>
+                <div class="scenario-item">
+                    <div class="scenario-num">3</div>
+                    <div>
+                        <h4>网络环境不稳定</h4>
+                        <p>在弱网或高延迟环境下，通过连接优化和容错机制，保持页面加载的连贯性，减少白屏和加载失败的困扰。</p>
+                    </div>
+                </div>
+                <div class="scenario-item">
+                    <div class="scenario-num">4</div>
+                    <div>
+                        <h4>多任务并行处理</h4>
+                        <p>需要同时打开大量标签页时，内存占用控制更好，标签页切换更流畅，不易出现卡顿或崩溃。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="security-tips" id="security">
+                <h4>🔐 安全使用提示</h4>
+                <ul>
+                    <li>请从官方网站或可信渠道下载浏览器安装包，避免使用来路不明的修改版本</li>
+                    <li>定期检查并更新浏览器版本，及时获得安全补丁和性能改进</li>
+                    <li>在公共设备上使用后，记得清除本地浏览数据并退出所有已登录账号</li>
+                    <li>不要随意安装来源不明的浏览器扩展，警惕权限过高的插件请求</li>
+                    <li>浏览器防护功能不能替代杀毒软件，请保持系统安全软件的开启</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 对比分析 -->
+    <section class="compare-section" id="compare">
+        <div class="container">
+            <div class="section-title">
+                <h3>与普通浏览器对比</h3>
+                <p>从多个维度了解专用浏览器的优势与差异</p>
+            </div>
+            <div class="compare-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>对比维度</th>
+                            <th>proumb专用浏览器</th>
+                            <th>普通浏览器</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>启动速度</td>
+                            <td class="highlight-col">优化启动流程，平均快 35%</td>
+                            <td>标准启动，受插件影响</td>
+                        </tr>
+                        <tr>
+                            <td>内存占用</td>
+                            <td class="highlight-col">标签页内存管理更高效</td>
+                            <td>多标签时占用较高</td>
+                        </tr>
+                        <tr>
+                            <td>隐私保护</td>
+                            <td class="highlight-col">默认开启严格追踪拦截</td>
+                            <td>需手动设置</td>
+                        </tr>
+                        <tr>
+                            <td>会话恢复</td>
+                            <td class="highlight-col">崩溃后自动恢复全部页面</td>
+                            <td>部分支持，可能丢失数据</td>
+                        </tr>
+                        <tr>
+                            <td>网络优化</td>
+                            <td class="highlight-col">内置连接优化算法</td>
+                            <td>依赖系统默认网络配置</td>
+                        </tr>
+                        <tr>
+                            <td>界面简洁度</td>
+                            <td class="highlight-col">无冗余功能，界面清爽</td>
+                            <td>功能丰富但稍显复杂</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h3>常见问题解答</h3>
+                <p>为你解答关于 proumb专用浏览器 的疑问</p>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>proumb专用浏览器是免费软件吗？</summary>
+                    <div class="answer">是的，目前提供免费基础版本，包含核心浏览功能和安全特性。未来可能推出更多高级功能，但基础版本会保持免费可用。</div>
+                </details>
+                <details class="faq-item">
+                    <summary>这款浏览器支持哪些操作系统？</summary>
+                    <div class="answer">目前支持 Windows 10/11、macOS 12 及以上版本、主流 Android 版本。iOS 版本正在开发中，敬请期待。</div>
+                </details>
+                <details class="faq-item">
+                    <summary>使用专用浏览器是否绝对安全？</summary>
+                    <div class="answer">任何软件都无法保证绝对安全。该浏览器在隐私保护和连接安全方面做了针对性优化，但用户仍需保持良好的上网习惯，不访问钓鱼网站，不下载不明文件。</div>
+                </details>
+                <details class="faq-item">
+                    <summary>如何导入原有浏览器的书签？</summary>
+                    <div class="answer">在设置中选择"导入书签"，支持从 Chrome、Firefox、Edge 等主流浏览器导入书签、密码和浏览历史，过程简单便捷。</div>
+                </details>
+                <details class="faq-item">
+                    <summary>浏览器会自动更新吗？</summary>
+                    <div class="answer">默认开启自动更新功能，确保你始终使用包含最新安全修复的版本。你也可以在设置中改为手动检查更新。</div>
+                </details>
+                <details class="faq-item">
+                    <summary>遇到问题如何获取技术支持？</summary>
+                    <div class="answer">可以在官网帮助中心查找使用教程，或通过官方反馈渠道提交问题。我们通常会在 1-2 个工作日内给予回复。</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 下载区域 -->
+    <section class="download-section" id="download">
+        <div class="container">
+            <h3>准备好体验更流畅的浏览了吗？</h3>
+            <p>下载 proumb专用浏览器，开启高效、安全的上网之旅</p>
+            <div class="download-buttons">
+                <a href="#" class="dl-btn">Windows 版下载</a>
+                <a href="#" class="dl-btn">macOS 版下载</a>
+                <a href="#" class="dl-btn alt">Android 版下载</a>
+            </div>
+            <p style="margin-top: 20px; font-size: 13px; opacity: 0.7;">当前版本：v2.4.1 | 更新日期：2025年1月</p>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h5>关于 proumb专用浏览器</h5>
+                    <p style="line-height: 1.8;">我们致力于为特定用户群体提供更安全、更高效的浏览工具。通过不断的技术优化和用户体验改进，让每一次点击都更安心、更流畅。</p>
+                </div>
+                <div>
+                    <h5>产品功能</h5>
+                    <a href="#features">极速加载</a>
+                    <a href="#features">隐私保护</a>
+                    <a href="#features">会话管理</a>
+                    <a href="#features">专注模式</a>
+                </div>
+                <div>
+                    <h5>帮助支持</h5>
+                    <a href="#faq">常见问题</a>
+                    <a href="#">使用教程</a>
+                    <a href="#">意见反馈</a>
+                    <a href="#">开发者文档</a>
+                </div>
+                <div>
+                    <h5>法律信息</h5>
+                    <a href="#">隐私政策</a>
+                    <a href="#">用户协议</a>
+                    <a href="#">Cookie 声明</a>
+                    <a href="#">开源许可</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 proumb专用浏览器 官方网站 | 本站为产品介绍页面，不提供任何非法内容导航</p>
+                <p style="margin-top: 6px;">请合理使用网络资源，遵守当地法律法规</p>
+            </div>
+        </div>
+    </footer>
+</body>
+  </html>
